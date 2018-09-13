@@ -44,6 +44,8 @@ function nixImplementation() {
   };
 }
 
-module.exports = process.platform === 'win32' && !process.env['SHELL']
+const isInsideCMD_EXE = process.platform === 'win32' && !process.env['SHELL'];
+
+module.exports = isInsideCMD_EXE
   ? win32Implementation()
   : nixImplementation();
